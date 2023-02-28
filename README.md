@@ -16,19 +16,19 @@ cargo build --release # >= Rust 1.58
 ## :one: download a map
 
 ```sh
-./ophois download --city Pantin
+cargo run download --city Pantin
 ```
 
 ## :two: extract
 
 ```sh
-CITY=Pantin; cat $CITY.osm | ./ophois format | ophois extract > $CITY-extracted.graph
+CITY=Pantin; cat $CITY.osm | cargo run format | ophois extract > $CITY-extracted.graph
 ```
 
 **same command with space separator**
 
 ```sh
-CITY=Pantin; cat $CITY.osm | ./ophois format | ./ophois extract --separator ' ' > $CITY-extracted.graph
+CITY=Pantin; cat $CITY.osm | cargo run format | cargo run extract --separator ' ' > $CITY-extracted.graph
 ```
 
 ## :three: simplify
@@ -36,7 +36,7 @@ CITY=Pantin; cat $CITY.osm | ./ophois format | ./ophois extract --separator ' ' 
 **keep the largest component, remove degree two nodes, replace nodes with under delta links by links and replace links (and nodes) which distance is under delta by a midpoint node connected to neighbours**
 
 ```sh
-CITY=Pantin; cat $CITY-extracted.graph | ./ophois simplify --delta 10.0 > $CITY-simplified.graph
+CITY=Pantin; cat $CITY-extracted.graph | cargo run simplify --delta 10.0 > $CITY-simplified.graph
 ```
 
 ### extracted input
